@@ -1,30 +1,22 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
-    username = models.CharField(
-        max_length=100,
-        verbose_name='Имя пользователя'
-    )
-    email = models.EmailField(
-        verbose_name='Почта',
-        unique=True
-    )
+# Create your models here.
+class User(AbstractUser):
     phone_number = models.CharField(
         max_length=200,
-        verbose_name='Телефонный номер',
-        blank=True, null=True
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True
+        verbose_name="Телефонный номер",
+        help_text="Например: +996777121314"
     )
     age = models.PositiveSmallIntegerField(
-        verbose_name='Возраст',
+        verbose_name="Возраст",
+        help_text="Например: 18",
         blank=True, null=True
     )
 
     def __str__(self):
-        return self.username
+        return self.username 
     
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
