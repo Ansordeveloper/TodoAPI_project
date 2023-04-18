@@ -4,6 +4,7 @@ from apps.todo_list.serializers import TodoSerializer
 from rest_framework.mixins import CreateModelMixin, UpdateModelMixin,DestroyModelMixin,ListModelMixin,RetrieveModelMixin
 from rest_framework.generics import DestroyAPIView
 from rest_framework.response import Response
+from rest_framework import filters
 
 
 class TodoAPIViewSet(GenericViewSet,
@@ -14,6 +15,8 @@ class TodoAPIViewSet(GenericViewSet,
                      RetrieveModelMixin):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ('title', 'description')
 
     def perform_create(self, serializer):
         return serializer.save(user=self.request.user)

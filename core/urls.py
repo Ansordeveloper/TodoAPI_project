@@ -21,7 +21,7 @@ from django.conf import settings
 
 api_urlpatterns =[
     path('users/', include('apps.users.urls')),
-    path('todo/', include('apps.todo.urls')),
+    path('todo/', include('apps.todo_list.urls')),
 ]
 
 urlpatterns = [ 
@@ -30,3 +30,4 @@ urlpatterns = [
     path('', include('apps.users.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+ 
