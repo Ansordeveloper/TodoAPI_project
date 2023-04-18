@@ -3,8 +3,8 @@ from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateMode
 from apps.users.serializers import UserSerializer, UserRegisterSerializer
 from apps.users.models import User
 from rest_framework.permissions import IsAdminUser, AllowAny
-from apps.users.permissions import IsUserPermissions
-from rest_framework import filters
+
+
 
 # Create your views here.
 class UserAPIViewSet(GenericViewSet,
